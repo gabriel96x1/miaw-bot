@@ -7,6 +7,7 @@ python -m venv .venv
 
 ## 2. Activarlo
 Windows: .venv\Scripts\activate
+
 macOS/Linux: source .venv/bin/activate
 
 ## 3. Instalar los requisitos
