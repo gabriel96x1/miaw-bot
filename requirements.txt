@@ -12,5 +12,7 @@ idna==3.13
 lxml==6.1.0
 ollama==0.6.1
 primp==1.2.3
+pydantic==2.13.3
+pydantic_core==2.46.3
 typing-inspection==0.4.2
 typing_extensions==4.15.0

@@ -1,11 +1,11 @@
-import ollama
 from tools.web_search_tool import web_search
 
 MODELO = "gpt-oss:20b"
 ASSISTANT_NAME = "miaw-bot"
 
 # --- BUCLE DE CONVERSACIÓN ---
-def chat_loop(client: ollama.Client):
+def chat_loop(client) -> None:
+    """ Core loop para interactuar con el chat. """
     # --- CONFIGURACIÓN INICIAL ---
 
     mensajes = []
@@ -51,18 +51,18 @@ def chat_loop(client: ollama.Client):
 
         # Si el modelo SI decide que necesita buscar en la web:
         mensajes.append(response.message)  # Guardamos su decisión de llamar a la herramienta [1]
-        
+
         for tool_call in response.message.tool_calls:
             func_name = tool_call.function.name
             func_args = tool_call.function.arguments
-            
+
             if func_name in available_tools:
                 print(f"🛠️ [Herramienta activada: {func_name}]...", flush=True)
-                
+
                 # Ejecutamos la búsqueda física
                 tool_output = available_tools[func_name](query=func_args.get("query"))
                 # print(f"🔍 [output: {str(tool_output)}]...", flush=True)
-                
+
                 # ¡CLAVE! Añadimos el resultado enlazándolo al nombre de la función
                 mensajes.append({
                     "role": "tool",
@@ -94,12 +94,14 @@ def chat_loop(client: ollama.Client):
             # 1. SI el bloque trae pensamiento, lo ignoramos para que no congele la pantalla
             if hasattr(chunk.message, 'thinking') and chunk.message.thinking:
                 continue
-            
+
             # 2. SI trae texto limpio, lo imprimimos y acumulamos
             token = chunk.message.content
             if token:
                 print(token, end="", flush=True)
                 full_response += token
+
+        print("\n")
 
         # Guardamos la respuesta final como 'assistant'
         mensajes.append({"role": "assistant", "content": full_response})

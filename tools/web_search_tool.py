@@ -11,7 +11,7 @@ def web_search(query: str) -> str:
         resultados = DDGS().text(query, max_results=3)
         if not resultados:
             return "No se encontraron resultados en la web."
-        
+
         formateado = ""
         for r in resultados:
             formateado += f"Título: {r['title']}\nTexto: {r['body']}\n\n"
