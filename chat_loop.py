@@ -29,7 +29,7 @@ def chat_loop(client) -> None:
             break
 
         # Añadimos el mensaje del usuario limpio
-        mensajes.append({"role": "user", "content": user_input})
+        mensajes.append({"role": "user", "content": user_input + "Responde Breve"})
 
         print(f"\n{ASSISTANT_NAME}: \n", end="", flush=True)
         print("Pensanding...\n\n", end="", flush=True)
