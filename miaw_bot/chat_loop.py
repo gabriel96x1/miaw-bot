@@ -1,4 +1,5 @@
-from tools.web_search_tool import web_search
+from miaw_bot.tools.web_search_tool import web_search
+from pathlib import Path
 
 MODELO = "gpt-oss:20b"
 ASSISTANT_NAME = "miaw-bot"
@@ -9,6 +10,9 @@ def chat_loop(client) -> None:
     # --- CONFIGURACIÓN INICIAL ---
 
     mensajes = []
+
+    with open(Path(__file__).parent / "miaw-bot-personality.md", "r", encoding="utf-8") as f:
+        personality = f.read()
 
     print(f"Chat con {ASSISTANT_NAME}\n")
 
@@ -29,7 +33,7 @@ def chat_loop(client) -> None:
             break
 
         # Añadimos el mensaje del usuario limpio
-        mensajes.append({"role": "user", "content": user_input + "Responde Breve"})
+        mensajes.append({"role": "user", "content": user_input + personality})
 
         print(f"\n{ASSISTANT_NAME}: \n", end="", flush=True)
         print("Pensanding...\n\n", end="", flush=True)

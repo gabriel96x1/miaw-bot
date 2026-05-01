@@ -12,3 +12,15 @@ macOS/Linux: source .venv/bin/activate
 
 ## 3. Instalar los requisitos
 pip install -r requirements.txt
+
+## Instalar UV
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+## Instalar dependencias usando UV
+uv sync
+
+## Instalar como comando en tu terminal
+uv tool install .
+
+# Modificar personalidad y forma de responder del bot:
+Modifica miaw-bot-personality.md a tu gusto para definir si quieres respuestas con una personalidad especifica para miaw-bot, si quieres respuestas cortas o algo más en cada interacción.
