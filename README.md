@@ -23,7 +23,8 @@ uv sync
 uv tool install .
 
 ## Lanzar el bot
-escribe miaw-bot desde tu terminal e iniciará el espacio de chat en terminal.
+escribe miaw-bot desde tu terminal e iniciará el espacio de chat en terminal. (si tienes ollama en local)
+escribe miaw-bot --ip X.X.X.X, para iniciarlo definiendo la ip del equipo donde tienes corriendo ollama.
 
 # Modificar personalidad y forma de responder del bot:
 Modifica miaw-bot-personality.md a tu gusto para definir si quieres respuestas con una personalidad especifica para miaw-bot, si quieres respuestas cortas o algo más en cada interacción.
